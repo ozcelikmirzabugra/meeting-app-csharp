@@ -1,0 +1,26 @@
+@model UserInfo
+
+@{ 
+    ViewBag.Title = "Application Detail";
+}
+
+@{
+    var className = @Model.WillAttend == true ? "primary" : "danger";
+}
+
+<main class="text-center">
+    <h1 class="h4">Application Detail</h1>
+    <p>
+        <span class="badge text-bg-@className">
+            @if(Model.WillAttend == true) {
+                <text>Attending</text>
+            } else{
+                <text>Not Attending</text>
+            }
+        </span>
+    </p>
+        <p>Name: @Model.Name</p>
+        <p>Email: @Model.Email</p>
+        <p>Phone: @Model.Phone</p>
+        <a asp-controller="Meeting" asp-action="List" class="btn btn-outline-@className">Attendance List</a>
+</main>
